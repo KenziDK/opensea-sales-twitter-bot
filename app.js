@@ -41,7 +41,7 @@ async function getLastestSaleData(collection) {
     });
     return res.data
 }
-        console.log(`${events.length} sales in the last minute...`);
+
 function buildDataForTwitter(sale) {
     return {
         tokenName: sale.node.assetQuantity.asset.name,
