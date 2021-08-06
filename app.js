@@ -78,6 +78,7 @@ function processAllSales(lastMinute, latestSalesData) {
             break
         }
     }
+    console.log(`${sendTwitterData.length} sales in the last minute...`)
     return sentTwitterData;
 }
 
