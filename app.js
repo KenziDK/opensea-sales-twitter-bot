@@ -64,7 +64,7 @@ function isNewSaleInLastMinute(lastMinute, sale) {
 }
 
 function processAllSales(lastMinute, latestSalesData) {
-    sentTwitterData = []
+    let sendTwitterData = [];
     const sales = latestSalesData.data.assetEvents.edges;
     for(let index in sales) {
         let sale = sales[index];
@@ -72,14 +72,14 @@ function processAllSales(lastMinute, latestSalesData) {
             if (sale.node.assetQuantity) {
                 twitterData = buildDataForTwitter(sale);
                 formatAndSendTweet(twitterData);
-                sentTwitterData.push(twitterData);
+                sendTwitterData.push(twitterData);
             }
         } else {
             break
         }
     }
     console.log(`${sendTwitterData.length} sales in the last minute...`)
-    return sentTwitterData;
+    return sendTwitterData;
 }
 
 // Poll OpenSea every minute & retrieve all sales for a given collection in the last minute
