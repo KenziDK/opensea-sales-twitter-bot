@@ -13,7 +13,7 @@ function formatAndSendTweet(twitterData) {
             : ` ${twitterData.tokenSymbol}`
     );
 
-    const tweetText = `${twitterData.tokenName} was purchased for ${formattedTokenPrice}${formattedPriceSymbol} ($${formattedUsdPrice}) by ${twitterData.buyersAddressShort} from ${twitterData.sellersAddressShort}. ${twitterData.openseaLink} #treeverse #ethereum`;
+    const tweetText = `${twitterData.tokenName} was purchased for ${formattedTokenPrice}${formattedPriceSymbol} ($${formattedUsdPrice}) by ${twitterData.buyersAddressShort} from ${twitterData.sellersAddressShort}. ${twitterData.openseaLink} #${process.env.OPENSEA_COLLECTION_SLUG} #ethereum`;
 
     console.log(tweetText);
 
@@ -86,7 +86,7 @@ function processAllSales(lastMinute, latestSalesData) {
 setInterval(async () => {
     const lastMinute = moment().startOf('minute').subtract(59, "seconds")
     try {
-        processAllSales(lastMinute, await getLastestSaleData("treeverse"));
+        processAllSales(lastMinute, await getLastestSaleData(process.env.OPENSEA_COLLECTION_SLUG));
     } catch(error) {
         console.log(error);
     }
