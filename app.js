@@ -112,4 +112,4 @@ async function pollOpenSeaForSales() {
 pollOpenSeaForSales();
 setInterval(async () => {
     pollOpenSeaForSales();
-}, 300000);
+}, 420000);
